@@ -34,20 +34,8 @@ export default function CategoryPicker({
   const [note, setNote] = useState(currentLog?.note ?? '')
   const sortedCategories = sortCategories(categories)
   const noteRef = useRef<HTMLTextAreaElement>(null)
-  const modalRef = useRef<HTMLDivElement>(null)
 
   const hourLabel = `${String(hour).padStart(2, '0')}:00 – ${String(hour + 1).padStart(2, '0')}:00`
-
-  // Close on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        onClose()
-      }
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
 
   // Close on Escape
   useEffect(() => {
@@ -67,10 +55,13 @@ export default function CategoryPicker({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
       <div
-        ref={modalRef}
-        className="w-full max-w-md bg-[#18181C] border border-white/[0.1] rounded-2xl shadow-2xl animate-slide-up overflow-hidden"
+        className="w-full max-w-md bg-[#18181C] border border-white/[0.1] rounded-2xl shadow-2xl animate-slide-up overflow-hidden max-h-[90vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-white/[0.07]">
@@ -93,7 +84,7 @@ export default function CategoryPicker({
         </div>
 
         {/* Categories grid */}
-        <div className="p-4">
+        <div className="p-4 overflow-y-auto flex-1">
           <div className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
             Select category
           </div>
