@@ -101,7 +101,7 @@ BEGIN
     (NEW.id, 'Sleep',          '#8B5CF6', '😴', TRUE),
     (NEW.id, 'Work',           '#F59E0B', '💼', TRUE),
     (NEW.id, 'Exercise',       '#10B981', '🏃', TRUE),
-    (NEW.id, 'Meals',          '#F97316', '🍽️', TRUE),
+    (NEW.id, 'Meals',          '#F97316', '🍴', TRUE),
     (NEW.id, 'Learning',       '#3B82F6', '📚', TRUE),
     (NEW.id, 'Leisure',        '#EC4899', '🎮', TRUE),
     (NEW.id, 'Social',         '#A78BFA', '👥', TRUE),
@@ -111,9 +111,9 @@ BEGIN
     (NEW.id, 'Social Media',   '#0EA5E9', '📱', TRUE),
     (NEW.id, 'Reading',        '#84CC16', '📖', TRUE),
     (NEW.id, 'Hobbies',        '#D946EF', '🎨', TRUE),
-    (NEW.id, 'Family',         '#F43F5E', '👨‍👩‍👧', TRUE),
+    (NEW.id, 'Family',         '#F43F5E', '👪', TRUE),
     (NEW.id, 'Health',         '#14B8A6', '🏥', TRUE),
-    (NEW.id, 'Shopping',       '#FBBF24', '🛍️', TRUE),
+    (NEW.id, 'Shopping',       '#FBBF24', '🛒', TRUE),
     (NEW.id, 'Cooking',        '#FB923C', '🍳', TRUE),
     (NEW.id, 'Other',          '#6B7280', '⭐', TRUE);
 
@@ -140,9 +140,9 @@ BEGIN
       (uid, 'Social Media',  '#0EA5E9', '📱', TRUE),
       (uid, 'Reading',       '#84CC16', '📖', TRUE),
       (uid, 'Hobbies',       '#D946EF', '🎨', TRUE),
-      (uid, 'Family',        '#F43F5E', '👨‍👩‍👧', TRUE),
+      (uid, 'Family',        '#F43F5E', '👪', TRUE),
       (uid, 'Health',        '#14B8A6', '🏥', TRUE),
-      (uid, 'Shopping',      '#FBBF24', '🛍️', TRUE),
+      (uid, 'Shopping',      '#FBBF24', '🛒', TRUE),
       (uid, 'Cooking',       '#FB923C', '🍳', TRUE)
     ON CONFLICT (user_id, name) DO NOTHING;
   END LOOP;
