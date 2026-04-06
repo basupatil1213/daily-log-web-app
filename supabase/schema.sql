@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS categories (
   user_id     UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
   name        TEXT NOT NULL,
   color       TEXT NOT NULL DEFAULT '#6366F1',
-  icon        TEXT NOT NULL DEFAULT '⭐',
+  icon        TEXT NOT NULL DEFAULT '',
   is_default  BOOLEAN DEFAULT FALSE NOT NULL,
   created_at  TIMESTAMPTZ DEFAULT NOW() NOT NULL,
   UNIQUE(user_id, name)
