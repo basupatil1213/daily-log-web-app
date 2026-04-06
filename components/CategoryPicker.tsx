@@ -12,6 +12,14 @@ interface CategoryPickerProps {
   onClose: () => void
 }
 
+function sortCategories(cats: Category[]): Category[] {
+  return [...cats].sort((a, b) => {
+    if (a.name === 'Other') return 1
+    if (b.name === 'Other') return -1
+    return a.name.localeCompare(b.name)
+  })
+}
+
 export default function CategoryPicker({
   hour,
   categories,
@@ -24,6 +32,7 @@ export default function CategoryPicker({
     currentLog?.category_id ?? null
   )
   const [note, setNote] = useState(currentLog?.note ?? '')
+  const sortedCategories = sortCategories(categories)
   const noteRef = useRef<HTMLTextAreaElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
 
@@ -89,7 +98,7 @@ export default function CategoryPicker({
             Select category
           </div>
           <div className="grid grid-cols-2 gap-1.5">
-            {categories.map((cat) => {
+            {sortedCategories.map((cat) => {
               const isActive = selectedId === cat.id
               return (
                 <button
