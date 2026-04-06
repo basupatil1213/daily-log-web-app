@@ -157,7 +157,10 @@ export default async function DashboardPage() {
           <div className="space-y-2">
             {byCategory.map(({ category, hours }) => (
               <div key={category.id} className="flex items-center gap-3">
-                <span className="text-base w-6 text-center">{category.icon}</span>
+                <div
+                  className="w-3 h-3 rounded-full shrink-0"
+                  style={{ backgroundColor: category.color }}
+                />
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm text-zinc-300">{category.name}</span>

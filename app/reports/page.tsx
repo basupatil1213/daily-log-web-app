@@ -145,7 +145,6 @@ export default async function ReportsPage({ searchParams }: Props) {
                 value={topCategory.category.name}
                 sub={`${topCategory.hours}h · ${pct(topCategory.hours, totalHours)}%`}
                 color={topCategory.category.color}
-                icon={topCategory.category.icon}
               />
             )}
           </div>
@@ -191,7 +190,10 @@ export default async function ReportsPage({ searchParams }: Props) {
                       <span className="text-zinc-600 font-mono text-xs w-5 text-right">
                         {index + 1}
                       </span>
-                      <span className="text-base">{category.icon}</span>
+                      <div
+                        className="w-3 h-3 rounded-full shrink-0"
+                        style={{ backgroundColor: category.color }}
+                      />
                       <span className="text-sm text-zinc-200 flex-1">{category.name}</span>
                       <span className="font-mono text-xs text-zinc-500">{avgHours}h/day</span>
                       <span
@@ -236,23 +238,20 @@ function StatCard({
   value,
   sub,
   color,
-  icon,
 }: {
   label: string
   value: string
   sub: string
   color: string
-  icon?: string
 }) {
   return (
     <div className="bg-[#111115] border border-white/[0.07] rounded-xl p-4">
       <div className="text-xs text-zinc-500 mb-1">{label}</div>
       <div
-        className="font-display font-bold text-xl flex items-center gap-1.5 truncate"
+        className="font-display font-bold text-xl truncate"
         style={{ color }}
       >
-        {icon && <span className="text-base">{icon}</span>}
-        <span className="truncate">{value}</span>
+        {value}
       </div>
       <div className="text-xs text-zinc-600 mt-0.5">{sub}</div>
     </div>

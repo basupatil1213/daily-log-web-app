@@ -122,7 +122,10 @@ export default function CategoryPicker({
                       : undefined
                   }
                 >
-                  <span className="text-base">{cat.icon}</span>
+                  <div
+                    className="w-3 h-3 rounded-full shrink-0"
+                    style={{ backgroundColor: cat.color }}
+                  />
                   <span className="text-sm font-medium truncate">{cat.name}</span>
                   {isActive && (
                     <svg

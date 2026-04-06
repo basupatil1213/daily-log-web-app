@@ -69,7 +69,10 @@ export default function HourSlot({ hour, log, isSelected, onClick }: HourSlotPro
 
       {/* Category icon */}
       {hasLog ? (
-        <span className="text-base shrink-0 opacity-70">{category!.icon}</span>
+        <div
+          className="w-2 h-2 rounded-full shrink-0 opacity-60"
+          style={{ backgroundColor: category!.color }}
+        />
       ) : (
         <svg
           className="w-3.5 h-3.5 text-zinc-700 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
