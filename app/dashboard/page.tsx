@@ -25,7 +25,6 @@ export default async function DashboardPage() {
   const { data: categories } = await supabase
     .from('categories')
     .select('*')
-    .eq('user_id', user.id)
     .order('name')
 
   // Fetch last 7 days logs for week chart

@@ -31,7 +31,6 @@ export default async function LogPage({ params }: Props) {
   const { data: categoriesData } = await supabase
     .from('categories')
     .select('*')
-    .eq('user_id', user.id)
     .order('name')
 
   const logs = (logsData as (TimeLog & { category: Category })[]) ?? []

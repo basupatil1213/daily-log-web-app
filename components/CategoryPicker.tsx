@@ -57,10 +57,10 @@ export default function CategoryPicker({
   return (
     <div
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
-      onClick={onClose}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <div
-        className="w-full max-w-md bg-[#18181C] border border-white/[0.1] rounded-2xl shadow-2xl animate-slide-up overflow-hidden max-h-[90vh] flex flex-col"
+        className="w-full max-w-md bg-[#18181C] border border-white/[0.1] rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -94,7 +94,7 @@ export default function CategoryPicker({
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedId(isActive ? null : cat.id)}
+                  onClick={() => setSelectedId(cat.id)}
                   className={`
                     flex items-center gap-2.5 px-3 py-2.5 rounded-xl border text-left
                     transition-all duration-100
